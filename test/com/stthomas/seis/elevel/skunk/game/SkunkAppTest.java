@@ -13,6 +13,7 @@ public class SkunkAppTest {
 
 	@Before
 	public void setUp() {
+		app = new SkunkApp();
 	}
 
 	@Test
