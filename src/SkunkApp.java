@@ -12,10 +12,10 @@ public class SkunkApp {
 	}
 
 	public Player play(int goal, List<Player> players) {
-		Dice dice = new Dice();
+		Round round = new Round();
 
 		//Round winner
-		Player roundWinner = dice.playRound(GOAL, players);
+		Player roundWinner = round.playRound(GOAL, players);
 		
 		return roundWinner;
 	}

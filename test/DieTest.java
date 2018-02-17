@@ -3,16 +3,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DieTest {
-	Die die;
-    @Before
+	RolledDie die;
+	LoadedDie loadeDie;
+
+	@Before
     public void setUp() {
-    	die = new Die();
+    	die = new RolledDie();
     }
 
 	@Test
 	public void testLoadedDie(){
-		die = new Die(1);
-		int loadedValue = die.roll(1);
+		loadeDie = new LoadedDie(1);
+		int loadedValue = loadeDie.roll();
 		Assert.assertTrue(loadedValue == 1);
 	}
 
