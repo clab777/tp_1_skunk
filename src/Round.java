@@ -1,13 +1,14 @@
 import java.util.Comparator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class Round {
 
 	// Create game objects (Die, Scanner, Player)
 	private RolledDie die1;
 	private RolledDie die2;
-//	private Scanner in;
+	private Scanner in;
 	private Player winner;
 		
      public Player getWinner() {
@@ -27,7 +28,7 @@ public class Round {
     public Player playRound(int goal, List<Player> players){
      	 die1 = new RolledDie();
     	 die2 = new RolledDie();
-//    	 in = new Scanner(System.in);
+    	 in = new Scanner(System.in);
 
    
     	Player roundWinner = null;
@@ -38,6 +39,7 @@ public class Round {
 			StdOut.println("-----------------------------------------------------------------------------------------");
 			
 			boolean nextTurn = false;
+			int roundScore = 0;
 			
 			while (!nextTurn) {
 				StdOut.println("Press [enter] to play a round....");
@@ -50,36 +52,55 @@ public class Round {
 
 				int rollTotal = roll1 + roll2;
 
-				StdOut.println("You rolled a " + roll1 + " and a " + roll2);
-				StdOut.println("For a total of " + rollTotal);
-				StdOut.println("Your score for the round is " +rollTotal);
+				StdOut.println();
+				StdOut.println("You rolled a " + roll1 + " and a " + roll2 +"\nA total of " + rollTotal + " for this round");
 				StdOut.println();
 				
 				//-------------------------------------------------------
 				//The game logic will be implemented here
 				//-------------------------------------------------------
 
-				//TODO #1
-				//Find out if skunk "1" was rolled?
-				//IF (SO) then take away score for the round
-				//NextPlayer's turn to play
-				
-				
-				//TODO #2
-				// Find out if double skunk "1", "1" was rolled?
-				// IF(SO) then the player lose points for the round and all of his points.
-				//NextPlayer's turn to play
+				if (hasRolledASkunk(roll1, roll2)) {
+					StdOut.println("You rolled a ***skunk***. You lose your points for this round! You will have to wait for next round.");
+					rollTotal = 0;
 
-				
-				//TODO #3
-				// ELSE keep rolling and adding up points to match or beat the GOAL
+					StdOut.println("Your score for the round is " +roundScore);
+					StdOut.println();
 
-				
-				
-				nextTurn = true;
-				player.setScore(rollTotal);
+					//nextPlayer's turn
+					nextTurn = true;
+					break;
+				} else if (hasRolledDoubleSkunk(roll1, roll2)) { 
+					// Find out if double skunk "1", "1" was rolled?
+					// IF(hasRolledDoubleSkunk) then the player lose points for the round and all of his points.
+					StdOut.println("You rolled a ***double skunk***. You lose all your points for this round and your grand total points! You will have to wait for next round.");
 
-			}
+					//take away points and score
+					rollTotal = 0;
+					player.setScore(0);
+
+					StdOut.println("Your score for the round is " +roundScore);
+					StdOut.println();
+					
+					//nextPlayer's turn
+					nextTurn = true;
+					break;					
+				}else{
+
+					roundScore = rollTotal;
+					player.setScore(player.getScore() + roundScore); 
+					
+					nextTurn = true;
+					
+					//TODO #3
+					// ELSE keep rolling and adding up points to match or beat the GOAL
+				}
+			}			
+			StdOut.println("Your [GrandTotal] score is " +player.getScore());
+			StdOut.println();
+
+			player.setScore(player.getScore()); 
+
 			
 			roundWinner = players.stream().max(Comparator.comparing(Player::getScore)).orElseThrow(NoSuchElementException::new);
 			
@@ -97,7 +118,15 @@ public class Round {
 
 
    
-    public int roll(Die d) {
+    private boolean hasRolledDoubleSkunk(int roll1, int roll2) {
+    	return (roll1 == 1 && roll2 == 1);
+    }
+
+	private boolean hasRolledASkunk(int roll1, int roll2) {
+ 	   return (roll1 == 1 || roll2 == 1);
+	}
+
+	public int roll(Die d) {
     	return d.roll();
     }
 
