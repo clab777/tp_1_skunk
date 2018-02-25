@@ -67,9 +67,12 @@ public class Round {
 
 					StdOut.println("Your score for the round is " +roundScore);
 					StdOut.println();
-
+					
 					//nextPlayer's turn
 					nextTurn = true;
+					
+					//add 1 chips to the kitty pot
+					game1.recievesSkunk();
 					break;
 				} else if (hasRolledDoubleSkunk(roll1, roll2)) { 
 					// Find out if double skunk "1", "1" was rolled?
@@ -85,6 +88,9 @@ public class Round {
 					
 					//nextPlayer's turn
 					nextTurn = true;
+					
+					//add 2 chips to the kitty pot
+					game1.recieves2Skunk();
 					break;					
 				}else{
 
