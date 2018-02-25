@@ -16,5 +16,17 @@ public class GameTest {
 		game1.addChip(1);
 		assertEquals(1, game1.getTotalChips());
 	}
+	
+	@Test
+	public void testPlayerGet1Skunk()
+	{
+		Game game1 = new Game();
+		Player p1 = new Player(1, "Sinith");
+		game1.recievesSkunk();
+		p1.drawsChip(1);
+		assertEquals(49, p1.getTotalChipLeft());
+		assertEquals(1, game1.getTotalChips());
+	}
+	
 
 }

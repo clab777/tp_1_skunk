@@ -8,6 +8,11 @@ public class Game
 		chips_total = 0;
 	}
 	
+	public void recievesSkunk()
+	{
+		chips_total += 1;
+	}
+	
 	public void addChip(int num)
 	{
 		chips_total += num;
