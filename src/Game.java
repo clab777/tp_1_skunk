@@ -18,6 +18,11 @@ public class Game
 		chips_total += 4;
 	}
 	
+	public void recieves1Skunkand1Deuce()
+	{
+		chips_total += 2;
+	}
+	
 	public void addChip(int num)
 	{
 		chips_total += num;

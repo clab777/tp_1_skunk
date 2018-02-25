@@ -38,5 +38,16 @@ public class GameTest {
 		assertEquals(46, p1.getTotalChipLeft());
 		assertEquals(4, game1.getTotalChips());
 	}
+	
+	@Test
+	public void testPlayerGet1Skunkand1Deuce()
+	{
+		Game game1 = new Game();
+		Player p1 = new Player(1, "Sinith");
+		game1.recieves1Skunkand1Deuce();
+		p1.drawsChip(2);
+		assertEquals(48, p1.getTotalChipLeft());
+		assertEquals(2, game1.getTotalChips());
+	}
 
 }
