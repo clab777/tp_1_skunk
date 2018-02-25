@@ -9,6 +9,7 @@ public class Round {
 	private RolledDie die1;
 	private RolledDie die2;
 	private Scanner in;
+	private Game game1;
 	private Player winner;
 		
      public Player getWinner() {
@@ -29,7 +30,7 @@ public class Round {
      	 die1 = new RolledDie();
     	 die2 = new RolledDie();
     	 in = new Scanner(System.in);
-
+    	 game1 = new Game();
    
     	Player roundWinner = null;
 
@@ -78,7 +79,7 @@ public class Round {
 					//take away points and score
 					rollTotal = 0;
 					player.setScore(0);
-
+					
 					StdOut.println("Your score for the round is " +roundScore);
 					StdOut.println();
 					
@@ -108,7 +109,7 @@ public class Round {
 		}
 		StdOut.println();
 		StdOut.println("******************************************************************************************************");
-		StdOut.println("The game winner is: ***" +roundWinner.getName() +"***" + " - TotalScore is: " +roundWinner.getScore());
+		StdOut.println("The game winner is: ***" +roundWinner.getName() +"***" + " - TotalScore is: " +roundWinner.getScore() + " - Total chip in the Kitty is: " + game1.getTotalChips());
 		StdOut.println("******************************************************************************************************");
 		StdOut.println();
 		StdOut.println("Good game!");

@@ -31,6 +31,9 @@ public class SkunkApp {
 		
 		player = new Player(3, "Eric");
 		players.add(player);
+		
+		player = new Player(4, "Sinith");
+		players.add(player);
 	
 		return players;
 	}
