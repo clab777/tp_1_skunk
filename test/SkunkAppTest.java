@@ -41,6 +41,9 @@ public class SkunkAppTest {
 		player = new Player(3, "Eric");
 		players.add(player);
 			
+		player = new Player(4, "Sinith");
+		players.add(player);
+			
 		
 		Player roundWinner = app.play(GOAL, players);
 		Assert.assertTrue(roundWinner != null);
