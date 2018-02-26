@@ -4,7 +4,7 @@ import org.junit.runners.Suite;
 import junit.framework.TestCase;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses( { DiceTest.class, DieTest.class, SkunkAppTest.class, RoundTest.class })
+@Suite.SuiteClasses( { DiceTest.class, DieTest.class, SkunkAppTest.class, RoundTest.class, GameTest.class})
 public class TestSuite extends TestCase {
 
 }
