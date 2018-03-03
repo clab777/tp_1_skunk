@@ -1,9 +1,9 @@
 
-public class Game 
+public class Chips 
 {
 	private int chips_total;
 	
-	public Game()
+	public Chips()
 	{
 		chips_total = 0;
 	}
