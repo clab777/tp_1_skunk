@@ -9,16 +9,18 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+import javax.swing.JTable;
+import java.awt.ScrollPane;
 
 public class SkunkGame {
 
 	private JFrame frame;
-	private JTextField textField;
 	private String[] imagesList = {"./images/skunk.png", "./images/two.png", "./images/three.png", "./images/four.png", 
 			"./images/five.png", "./images/six.png"};
-	private JTextField textField_1;
-	private JTextField textField_2;
-
+	private int num1;
+	private int num2;
+	private JTable table;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -47,16 +49,16 @@ public class SkunkGame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 587, 407);
+		frame.setBounds(100, 100, 640, 502);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(117, 45, 120, 125);
+		lblNewLabel.setBounds(35, 45, 120, 125);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel label = new JLabel("");
-		label.setBounds(311, 45, 120, 125);
+		label.setBounds(35, 208, 120, 125);
 		frame.getContentPane().add(label);
 		
 		JButton btnNewButton = new JButton("Roll");
@@ -66,8 +68,8 @@ public class SkunkGame {
 				RolledDie die1 = new RolledDie();
 				RolledDie die2 = new RolledDie();
 				
-				int num1 = die1.roll();
-				int num2 = die2.roll();
+				num1 = die1.roll();
+				num2 = die2.roll();
 				
 				/* Die 1 Image */
 				ImageIcon imc1 = new ImageIcon(imagesList[num1-1]);
@@ -84,8 +86,14 @@ public class SkunkGame {
 				label.setIcon(new ImageIcon(newimage2));
 			}
 		});
-		btnNewButton.setBounds(214, 253, 96, 79);
+		btnNewButton.setBounds(35, 376, 96, 79);
 		frame.getContentPane().add(btnNewButton, BorderLayout.WEST);
+		
+		table = new JTable();
+		table.setBounds(389, 169, 1, 1);
+		frame.getContentPane().add(table);
+		
+		
 		
 		
 		
@@ -93,6 +101,4 @@ public class SkunkGame {
 		
 		
 	}
-	
-		
 }
