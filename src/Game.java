@@ -16,6 +16,9 @@ public class Game
 	public void play()
 	{
 		Scanner reader = new Scanner(System.in);
+		StdOut.println("-----------------------------------------------------------------------------------------");
+		StdOut.println("Welcome to the game of Skunk, Let's play some game!");
+		StdOut.println("-----------------------------------------------------------------------------------------");
 		System.out.print("Enter number of players:");		
 		num_players = reader.nextInt();
 		if(num_players == 0)
@@ -38,14 +41,45 @@ public class Game
 			Player player = new Player(i, playerID);
 			players.add(player);
 		}
-		reader.close();
 	}
 	
-	public void startTheGame()
+	private void startTheGame()
 	{
+		boolean reroll = false;
+		Round game = new Round();
+		boolean allowToReroll = false;
+		
+		allowToReroll = game.playerTurn(players.get(0));
+		if(allowToReroll == true)
+		{
+			reroll = this.askForReroll();
+			if(reroll == true)
+			{
+				allowToReroll = game.playerTurn(players.get(0));
+			}
+				
+		}else
+		{
+			reroll = false;
+		}
 		
 	}
     
+	private boolean askForReroll()
+	{
+		String respond;
+		Scanner reader = new Scanner(System.in);
+		System.out.print("Would you like to reroll?(Y/N)");
+		respond = reader.nextLine();
+		if(respond.equals("Y") || respond.equals("y"))
+		{
+			return true;
+		}else  
+		{
+			return false;
+		}
+	}
+	
 	public int getNumberofPlayers()
 	{
 		return num_players;
