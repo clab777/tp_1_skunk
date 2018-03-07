@@ -46,7 +46,7 @@ public class Round {
 				StdOut.println("Press [enter] to play a round....");
 				
 				// Roll the dice for the first time
-//				in.nextLine();
+				in.nextLine();
 
 				int roll1 = die1.roll();
 				int roll2 = die2.roll();
