@@ -46,12 +46,23 @@ public class Game
 	private void startTheGame()
 	{
 		boolean reroll = false;
+		Round game = new Round();
+		boolean allowToReroll = false;
 		
-		reroll = this.askForReroll();
-		if(reroll == true)
+		allowToReroll = game.playerTurn(players.get(0));
+		if(allowToReroll == true)
 		{
-			System.out.print("Winner");
+			reroll = this.askForReroll();
+			if(reroll == true)
+			{
+				allowToReroll = game.playerTurn(players.get(0));
+			}
+				
+		}else
+		{
+			reroll = false;
 		}
+		
 	}
     
 	private boolean askForReroll()
@@ -60,7 +71,6 @@ public class Game
 		Scanner reader = new Scanner(System.in);
 		System.out.print("Would you like to reroll?(Y/N)");
 		respond = reader.nextLine();
-		reader.close();
 		if(respond.equals("Y") || respond.equals("y"))
 		{
 			return true;

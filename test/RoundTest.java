@@ -29,7 +29,7 @@ public class RoundTest {
 		players.add(player);
 
 		//List of players
-		round.playRound(10, players);
+		//round.playRound(10, players);
 		Player theWinner = round.getWinner();
 		
 		Assert.assertTrue(theWinner.getScore() > 0);
