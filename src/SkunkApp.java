@@ -40,10 +40,10 @@ public class SkunkApp {
     	StdOut.println("-------------------------------");
         while(!round.currentTurn().isOver()) {
             StdOut.println("This turn's score is " + round.currentTurn().getTurnScore());
-            StdOut.println("Want to play again? 1-(Yes) or  2-(No)");
-			int userChoice = scanner.nextInt();
+            StdOut.println("Want to play again? (Y) or (N)");
+			String userChoice = scanner.nextLine();
 
-            if (userChoice == 2) {
+            if (userChoice != null && "N".equalsIgnoreCase(userChoice)) {
                 round.caskOutPoints();
             } else {
             	ScoreInfo  scoreInfo = round.roll();  
