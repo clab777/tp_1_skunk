@@ -29,6 +29,7 @@ public class SkunkApp {
         
     	StdOut.println("***************************************************************************"); 
         StdOut.println("           Game over! The winner is: " + round.getWinner().getName());
+        StdOut.println("           You recieve: " + totalChipsIntheKitty);
 		StdOut.println("           GOODBYE... THANKS FOR PLAYING!!!                     "); 
 		StdOut.println("***************************************************************************"); 
 		
@@ -36,11 +37,14 @@ public class SkunkApp {
     }
 
     private static void playOneTurn() {
+    		int current_chips = 0;
     	StdOut.println("-------------------------------");
         StdOut.println("Now playing: " + round.currentPlayer().getName() + "...");
+        StdOut.println("Total Chips in the Kitty: " + totalChipsIntheKitty + " chips");
     	StdOut.println("-------------------------------");
     StdOut.println("Your total score is " + round.currentPlayer().getScore());
-
+    StdOut.println("Your chip total is " + round.currentPlayer().getTotalChipLeft());
+    
         while(!round.currentTurn().isOver()) {
             StdOut.println("This turn's score is " + round.currentTurn().getTurnScore());
             StdOut.println("Want to play again? 1-(Yes) or  2-(No)");
@@ -53,6 +57,8 @@ public class SkunkApp {
             	printMessage(scoreInfo);
             }
         }
+        current_chips = round.currentTurn().getTurnChipsTotal() + totalChipsIntheKitty;
+        totalChipsIntheKitty = current_chips;
         if (!round.isOver()) {
             round.startNextTurn();
         }

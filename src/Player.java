@@ -36,6 +36,6 @@ public final class Player {
     
     public int getTotalChipLeft()
     {
-    		return chips;
+    		return this.chips;
     }
 }
