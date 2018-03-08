@@ -7,6 +7,7 @@ public final class Turn {
     private int turnScore = 0;
     private boolean isOver = false;
     private ScoreInfo scoreInfo;
+    private int totalChips = 0;
     
     public Turn(Player player, Die die) {
         this.player = player;
@@ -43,6 +44,7 @@ public final class Turn {
             
             scoreInfo.setScore(turnScore);
         }
+        totalChips = chips.getTotalChips();
         return scoreInfo; 
     }
 
@@ -61,5 +63,9 @@ public final class Turn {
 
     public boolean isOver() {
         return isOver;
+    }
+    
+    public int getTurnChipsTotal() {
+    		return this.totalChips;
     }
 }
