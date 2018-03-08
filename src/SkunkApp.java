@@ -1,41 +1,74 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class SkunkApp {
 
-    private static final int GOAL = 100; //THE GOAL TO REACH OR BEAT TO WIN THE GAME
+	private static int POINTS_TO_WIN = 100;
+    private static Round round;
+    private static Scanner scanner;
 
+    public static void main(String[] args) {
+    	Player player1 = new Player(10, "Christophe");
+    	Player player2 = new Player(20, "Sinith");
+    	
+    	playARound(player1, player2, POINTS_TO_WIN);
+    }
+    
+    public static Player playARound(Player player1, Player player2, int goal){
+    	round = new Round(player1,player2, POINTS_TO_WIN);
+    	scanner = new Scanner(System.in);
+    	StdOut.println("***************************************************************************"); 
+        StdOut.println("Welcome to the Game of SKUNK! Let's play...");
+    	StdOut.println("***************************************************************************"); 
 
-	public static void main(String[] args){
-		SkunkApp app = new SkunkApp();
-		app.play(GOAL, getParticipants());
+    	while (!round.isOver() ) {
+           playOneTurn();
+        }
+        
+    	printScores(player1, player2);
+        
+    	StdOut.println("***************************************************************************"); 
+        StdOut.println("           Game over! The winner is: " + round.getWinner().getName());
+		StdOut.println("           GOODBYE... THANKS FOR PLAYING!!!                     "); 
+		StdOut.println("***************************************************************************"); 
+		
+		return round.getWinner();
+    }
+
+    private static void playOneTurn() {
+    	StdOut.println("-------------------------------");
+        StdOut.println("Now playing: " + round.currentPlayer().getName() + "...");
+    	StdOut.println("-------------------------------");
+        while(!round.currentTurn().isOver()) {
+            StdOut.println("This turn's score is " + round.currentTurn().getTurnScore());
+            StdOut.println("Want to play again? 1-(Yes) or  2-(No)");
+			int userChoice = scanner.nextInt();
+
+            if (userChoice == 2) {
+                round.caskOutPoints();
+            } else {
+            	ScoreInfo  scoreInfo = round.roll();  
+            	printMessage(scoreInfo);
+            }
+        }
+        if (!round.isOver()) {
+            round.startNextTurn();
+        }
+    }
+
+    private static void printMessage(ScoreInfo scoreInfo) {
+    	if(scoreInfo != null && scoreInfo.getMessage() != null){
+    		StdOut.println(scoreInfo.getMessage());
+    	}
 	}
 
-	public Player play(int goal, List<Player> players) {
-		Round round = new Round();
-
-		//Round winner
-		Player roundWinner = round.playRound(GOAL, players);
-		
-		return roundWinner;
-	}
-
-	private static List<Player> getParticipants(){
-		List<Player> players = new ArrayList<Player>();
-		
-		Player player = new Player(1, "Christophe");
-		players.add(player);
-		
-		player = new Player(2, "Elvis");
-		players.add(player);
-		
-		player = new Player(3, "Eric");
-		players.add(player);
-		
-		player = new Player(4, "Sinith");
-		players.add(player);
-	
-		return players;
-	}
-
+	private static void printScores(Player player1, Player player2) {
+    	StdOut.println("\n");
+    	StdOut.println("+++++++++++++++++++++++++++++++++");
+    	StdOut.println("+++        Scorecard          +++");
+       	StdOut.println("+++++++++++++++++++++++++++++++++");
+       	StdOut.println("");
+        StdOut.println(player1.getName() + "'s score is " + player1.getScore());
+        StdOut.println(player2.getName() + "'s score is " + player2.getScore());
+    	StdOut.println("\n");
+    }
 }
