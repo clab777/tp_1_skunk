@@ -8,18 +8,29 @@ public class SkunkApp {
     private static int totalChipsIntheKitty = 0;
     
     public static void main(String[] args) {
-    	Player player1 = new Player(10, "Christophe");
-    	Player player2 = new Player(20, "Sinith");
+    	
+    	StdOut.println("***************************************************************************"); 
+        StdOut.println("Welcome to the Game of SKUNK! Let's play...");
+    	StdOut.println("***************************************************************************");
+    	
+    	Scanner textScan = new Scanner(System.in);
+    	
+    	StdOut.print("Enter Player1 name: ");
+    	String player1_name = textScan.nextLine();
+    	StdOut.print("Enter Player2 name: ");
+    	String player2_name = textScan.nextLine();
+    	
+    	Player player1 = new Player(10, player1_name);
+    	Player player2 = new Player(20, player2_name);
     	
     	playARound(player1, player2, POINTS_TO_WIN);
+    	textScan.close();
     }
     
     public static Player playARound(Player player1, Player player2, int goal){
     	round = new Round(player1,player2, POINTS_TO_WIN);
     	scanner = new Scanner(System.in);
-    	StdOut.println("***************************************************************************"); 
-        StdOut.println("Welcome to the Game of SKUNK! Let's play...");
-    	StdOut.println("***************************************************************************"); 
+    	 
 
     	while (!round.isOver() ) {
            playOneTurn();
@@ -29,7 +40,7 @@ public class SkunkApp {
         
     	StdOut.println("***************************************************************************"); 
         StdOut.println("           Game over! The winner is: " + round.getWinner().getName());
-        StdOut.println("           You recieve: " + totalChipsIntheKitty);
+        StdOut.println("           You recieve: " + totalChipsIntheKitty + "Chips");
 		StdOut.println("           GOODBYE... THANKS FOR PLAYING!!!                     "); 
 		StdOut.println("***************************************************************************"); 
 		
