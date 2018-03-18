@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SkunkAppTest {
-	private static final int GOAL = 10;
+	private static final int GOAL = 100;
 	private List<Player> players = null;
 	
 	private SkunkApp app;
@@ -37,7 +37,8 @@ public class SkunkAppTest {
 		
 		player = new Player(4, "Sinith");
 		players.add(player);
-			
+		
+		System.setProperty("JUNIT_TEST", "True");
 		
 		Player winner = SkunkApp.playARound(players.get(0), players.get(1), GOAL);
 		Assert.assertTrue(winner != null);
