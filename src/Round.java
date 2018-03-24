@@ -20,7 +20,7 @@ public class Round {
         return turn.getPlayer();
     }
 
-    public void caskOutPoints() {
+	public void caskOutPoints() {
         turn.end();
         if (currentPlayer().getScore() >= pointsToWin) {
             this.winner = currentPlayer();

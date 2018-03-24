@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class SkunkApp {
 
-	private static int POINTS_TO_WIN = 100;
+	private static int POINTS_TO_WIN = 10;
 	private static Round round;
 	private static Scanner scanner;
 	private static int totalChipsIntheKitty = 0;
@@ -58,7 +58,8 @@ public class SkunkApp {
 		while (!round.currentTurn().isOver()) {
 			int turnScore = round.currentTurn().getTurnScore();
 			StdOut.println("This turn's score is: " + turnScore);
-
+			StdOut.println("Your die1: "+round.currentTurn().getDie1());
+			StdOut.println("Your die2: "+round.currentTurn().getDie2());
 			String userChoice = null;
 
 			if (!isJunitTest()) {
