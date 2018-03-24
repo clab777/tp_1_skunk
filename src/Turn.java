@@ -9,10 +9,14 @@ public final class Turn {
     private boolean isOver = false;
     private ScoreInfo scoreInfo;
     private int totalChips = 0;
+    private int roll1;
+    private int roll2;
     
     public Turn(Player player, Die die) {
         this.player = player;
         this.die = die;
+        roll1 = 0;
+        roll2 = 0;
     }
 
     public int getTurnScore() {
@@ -20,8 +24,8 @@ public final class Turn {
     }
 
     public ScoreInfo roll() {
-        int roll1 = die.roll();
-        int roll2 = die.roll();
+        roll1 = die.roll();
+        roll2 = die.roll();
         int result = 0;
         
         scoreInfo = new ScoreInfo();
@@ -77,5 +81,15 @@ public final class Turn {
     
     public int getTurnChipsTotal() {
     		return this.totalChips;
+    }
+    
+    public int getDie1()
+    {
+    		return roll1;
+    }
+    
+    public int getDie2()
+    {
+    		return roll2;
     }
 }
