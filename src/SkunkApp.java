@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class SkunkApp {
 
-	private static int POINTS_TO_WIN = 10;
+	private static int POINTS_TO_WIN = 100;
 	private static Round round;
 	private static Scanner scanner;
 	private static int totalChipsIntheKitty = 0;
