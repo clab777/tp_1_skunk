@@ -1,4 +1,4 @@
-# Saint Thomas University - SEIS 635: Software Analysis and Design
+# SEIS 635: Software Analysis and Design
 School project - tp_1_skunk: Board Game
 
 Similar to Cosmic Wimpout, but much easier and kid friendly. 
